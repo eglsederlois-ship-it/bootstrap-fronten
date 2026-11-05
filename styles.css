@@ -106,9 +106,20 @@ main > .card:nth-of-type(3)  { --accent: var(--lavender); }
 }
 
 .map-box {
-  min-height: 350px;
+  min-height: 500px;
+  padding: 0;
+  overflow: hidden;
 }
 
-.placeholder-box img {
+/* Sobald die Karte drin ist: kein gestrichelter Rahmen mehr */
+.map-box:has(iframe) {
+  border: 0;
+}
+
+.map-frame {
+  flex: 1;
+  width: 100%;
+  height: clamp(450px, 70vh, 750px);
+  border: 0;
   border-radius: var(--bs-border-radius);
 }
