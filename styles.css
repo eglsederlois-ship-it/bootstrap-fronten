@@ -1,0 +1,38 @@
+/* Globale Bootstrap-Variablen anpassen */
+:root {
+  --bs-body-bg: #f4f6fb;
+  --bs-body-font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  --bs-border-radius: 0.75rem;
+  --bs-link-color: #5b3cc4;
+}
+
+/* Buttons über ihre Komponenten-Variablen umfärben */
+.btn-primary {
+  --bs-btn-bg: #5b3cc4;
+  --bs-btn-border-color: #5b3cc4;
+  --bs-btn-hover-bg: #4a2fa3;
+  --bs-btn-hover-border-color: #4a2fa3;
+  --bs-btn-active-bg: #3d2687;
+  --bs-btn-active-border-color: #3d2687;
+}
+
+/* Karten */
+.card {
+  --bs-card-border-color: transparent;
+}
+
+/* Eigene Klasse für Platzhalter */
+.placeholder-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  border: 2px dashed var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  color: var(--bs-secondary-color);
+  text-align: center;
+}
+
+.map-box {
+  min-height: 350px;
+}
