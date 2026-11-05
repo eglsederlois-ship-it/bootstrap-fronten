@@ -1,38 +1,114 @@
-/* Globale Bootstrap-Variablen anpassen */
+/* ========== Farben & Grundeinstellungen ========== */
 :root {
-  --bs-body-bg: #f4f6fb;
-  --bs-body-font-family: system-ui, "Segoe UI", Roboto, sans-serif;
-  --bs-border-radius: 0.75rem;
-  --bs-link-color: #5b3cc4;
+  /* eigene Pastellfarben */
+  --pink: #ff8fb8;
+  --pink-dark: #f0679c;
+  --lavender: #b9a3ff;
+  --mint: #7fdcc4;
+  --peach: #ffbf9b;
+  --sky: #8fcbff;
+
+  /* Bootstrap-Variablen anpassen */
+  --bs-body-bg: #fff7fb;
+  --bs-body-color: #4a3b52;
+  --bs-body-font-family: "Quicksand", system-ui, sans-serif;
+  --bs-border-radius: 1.25rem;
+  --bs-border-color: #f6d3e3;
+  --bs-secondary-color: #9b86a8;
 }
 
-/* Buttons über ihre Komponenten-Variablen umfärben */
+body {
+  background: linear-gradient(160deg, #fff0f6 0%, #f3edff 50%, #e9fbf5 100%) fixed;
+}
+
+h1, h2, .navbar-brand {
+  font-family: "Fredoka", sans-serif;
+}
+
+/* ========== Navbar & Footer ========== */
+.cute-nav,
+.cute-footer {
+  background: linear-gradient(90deg, var(--pink), var(--lavender));
+}
+
+.cute-nav .navbar-brand {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.cute-footer {
+  color: #fff;
+}
+
+/* ========== Header ========== */
+header h1 {
+  background: linear-gradient(90deg, var(--pink-dark), var(--lavender));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ========== Buttons ========== */
 .btn-primary {
-  --bs-btn-bg: #5b3cc4;
-  --bs-btn-border-color: #5b3cc4;
-  --bs-btn-hover-bg: #4a2fa3;
-  --bs-btn-hover-border-color: #4a2fa3;
-  --bs-btn-active-bg: #3d2687;
-  --bs-btn-active-border-color: #3d2687;
+  --bs-btn-bg: var(--pink);
+  --bs-btn-border-color: var(--pink);
+  --bs-btn-hover-bg: var(--pink-dark);
+  --bs-btn-hover-border-color: var(--pink-dark);
+  --bs-btn-active-bg: var(--pink-dark);
+  --bs-btn-active-border-color: var(--pink-dark);
+  --bs-btn-border-radius: 50rem;   /* Pillenform */
+  --bs-btn-font-weight: 600;
+  box-shadow: 0 4px 12px rgba(255, 143, 184, 0.4);
 }
 
-/* Karten */
+/* ========== Cards ========== */
 .card {
   --bs-card-border-color: transparent;
+  --bs-card-border-radius: var(--bs-border-radius);
+  border-top: 6px solid var(--accent, var(--pink));
+  box-shadow: 0 8px 24px rgba(185, 163, 255, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Eigene Klasse für Platzhalter */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(185, 163, 255, 0.35);
+}
+
+/* jede Card bekommt ihre eigene Farbe */
+.row .col:nth-child(1) .card { --accent: var(--pink); }
+.row .col:nth-child(2) .card { --accent: var(--peach); }
+.row .col:nth-child(3) .card { --accent: var(--sky); }
+main > .card:nth-of-type(2)  { --accent: var(--mint); }
+main > .card:nth-of-type(3)  { --accent: var(--lavender); }
+
+.card-title {
+  color: var(--pink-dark);
+}
+
+/* ========== Listen ========== */
+.list-group {
+  --bs-list-group-bg: transparent;
+  --bs-list-group-border-color: var(--bs-border-color);
+}
+
+/* ========== Platzhalter ========== */
 .placeholder-box {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 180px;
-  border: 2px dashed var(--bs-border-color);
+  border: 2px dashed var(--accent, var(--pink));
   border-radius: var(--bs-border-radius);
+  background-color: rgba(255, 255, 255, 0.6);
   color: var(--bs-secondary-color);
   text-align: center;
 }
 
 .map-box {
   min-height: 350px;
+}
+
+.placeholder-box img {
+  border-radius: var(--bs-border-radius);
 }
