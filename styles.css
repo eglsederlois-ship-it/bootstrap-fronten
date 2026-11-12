@@ -1,125 +1,271 @@
 /* ========== Farben & Grundeinstellungen ========== */
-:root {
-  /* eigene Pastellfarben */
-  --pink: #ff8fb8;
-  --pink-dark: #f0679c;
-  --lavender: #b9a3ff;
-  --mint: #7fdcc4;
-  --peach: #ffbf9b;
-  --sky: #8fcbff;
+/* ================= Chrome & Stahl: Variablen ================= */
+:root,
+[data-bs-theme="dark"] {
+  /* eigene Stahl-Farben */
+  --steel-900: #0b0d10;
+  --steel-800: #13161a;
+  --steel-700: #1b1f24;
+  --steel-500: #3a4049;
+  --steel-300: #8a94a0;
+  --steel-100: #e9edf2;
 
-  /* Bootstrap-Variablen anpassen */
-  --bs-body-bg: #fff7fb;
-  --bs-body-color: #4a3b52;
-  --bs-body-font-family: "Quicksand", system-ui, sans-serif;
-  --bs-border-radius: 1.25rem;
-  --bs-border-color: #f6d3e3;
-  --bs-secondary-color: #9b86a8;
+  /* Chrome-Verlauf: hell-dunkel-hell wie poliertes Metall */
+  --chrome: linear-gradient(135deg, #f5f7fa 0%, #b8c1cc 22%, #6f7a86 45%, #e9edf2 60%, #8d97a3 80%, #f5f7fa 100%);
+  --chrome-soft: linear-gradient(180deg, #2b3036 0%, #1a1d22 100%);
+
+  /* Bootstrap-Variablen überschreiben */
+  --bs-body-bg: var(--steel-900);
+  --bs-body-color: #d7dce2;
+  --bs-body-font-family: "Inter", system-ui, sans-serif;
+  --bs-border-radius: 0.9rem;
+  --bs-border-color: #2f353d;
+  --bs-secondary-color: var(--steel-300);
 }
 
 body {
-  background: linear-gradient(160deg, #fff0f6 0%, #f3edff 50%, #e9fbf5 100%) fixed;
+  background:
+    radial-gradient(circle at 15% 0%, #1f242a 0%, transparent 45%),
+    radial-gradient(circle at 100% 100%, #171b20 0%, transparent 40%),
+    var(--steel-900);
+  background-attachment: fixed;
 }
 
-h1, h2, .navbar-brand {
-  font-family: "Fredoka", sans-serif;
+h1, h2, h3, .navbar-brand {
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.04em;
 }
 
-/* ========== Navbar & Footer ========== */
-.cute-nav,
-.cute-footer {
-  background: linear-gradient(90deg, var(--pink), var(--lavender));
-}
-
-.cute-nav .navbar-brand {
-  color: #fff;
-  font-size: 1.5rem;
-}
-
-.cute-footer {
-  color: #fff;
-}
-
-/* ========== Header ========== */
-header h1 {
-  background: linear-gradient(90deg, var(--pink-dark), var(--lavender));
+/* ================= Chrome-Text mit Glanz-Animation ================= */
+.chrome-text {
+  background: var(--chrome);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: shine 6s linear infinite;
 }
 
-/* ========== Buttons ========== */
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+/* ================= Willkommen-Seite ================= */
+.welcome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at top, #262c33 0%, var(--steel-900) 70%);
+}
+
+/* drehender Metall-Schimmer im Hintergrund */
+.welcome::before {
+  content: "";
+  position: absolute;
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  background: conic-gradient(#f5f7fa, #6f7a86, #e9edf2, #3a4049, #f5f7fa);
+  filter: blur(120px);
+  opacity: 0.18;
+  animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.welcome .container {
+  position: relative;
+  z-index: 1;
+}
+
+.welcome-clock {
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.2em;
+  color: var(--bs-secondary-color);
+}
+
+.welcome-form {
+  max-width: 360px;
+}
+
+/* ================= Navbar & Footer ================= */
+.chrome-nav {
+  background: linear-gradient(180deg, rgba(40, 45, 52, 0.85), rgba(18, 21, 25, 0.85));
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--steel-500);
+}
+
+.chrome-nav .navbar-brand {
+  color: var(--steel-100);
+}
+
+.chrome-footer {
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid var(--bs-border-color);
+  color: var(--bs-secondary-color);
+}
+
+/* ================= Buttons ================= */
 .btn-primary {
-  --bs-btn-bg: var(--pink);
-  --bs-btn-border-color: var(--pink);
-  --bs-btn-hover-bg: var(--pink-dark);
-  --bs-btn-hover-border-color: var(--pink-dark);
-  --bs-btn-active-bg: var(--pink-dark);
-  --bs-btn-active-border-color: var(--pink-dark);
-  --bs-btn-border-radius: 50rem;   /* Pillenform */
+  --bs-btn-color: var(--steel-900);
+  --bs-btn-hover-color: var(--steel-900);
+  --bs-btn-active-color: var(--steel-900);
+  --bs-btn-border-color: #9aa4af;
+  --bs-btn-hover-border-color: #c9d0d8;
+  --bs-btn-active-border-color: #c9d0d8;
+  --bs-btn-bg: #c9d0d8;
+  --bs-btn-hover-bg: #e9edf2;
+  --bs-btn-active-bg: #aab3bd;
+  --bs-btn-border-radius: 50rem;
   --bs-btn-font-weight: 600;
-  box-shadow: 0 4px 12px rgba(255, 143, 184, 0.4);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 60%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 4px 14px rgba(0, 0, 0, 0.5);
 }
 
-/* ========== Cards ========== */
+.btn-outline-secondary {
+  --bs-btn-color: #c9d0d8;
+  --bs-btn-border-color: #4a525c;
+  --bs-btn-hover-bg: #2a2f36;
+  --bs-btn-hover-border-color: #8a94a0;
+  --bs-btn-hover-color: #ffffff;
+}
+
+/* ================= Eingabefelder ================= */
+.form-control,
+.form-select {
+  background-color: var(--steel-800);
+  border-color: var(--steel-500);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--steel-300);
+  box-shadow: 0 0 0 0.2rem rgba(201, 208, 216, 0.15);
+}
+
+/* ================= Cards ================= */
 .card {
-  --bs-card-border-color: transparent;
-  --bs-card-border-radius: var(--bs-border-radius);
-  border-top: 6px solid var(--accent, var(--pink));
-  box-shadow: 0 8px 24px rgba(185, 163, 255, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  --bs-card-bg: rgba(27, 31, 36, 0.75);
+  --bs-card-border-color: var(--bs-border-color);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Chrome-Streifen oben an jeder Card */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--chrome);
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(185, 163, 255, 0.35);
+  border-color: var(--steel-500);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
-
-/* jede Card bekommt ihre eigene Farbe */
-.row .col:nth-child(1) .card { --accent: var(--pink); }
-.row .col:nth-child(2) .card { --accent: var(--peach); }
-.row .col:nth-child(3) .card { --accent: var(--sky); }
-main > .card:nth-of-type(2)  { --accent: var(--mint); }
-main > .card:nth-of-type(3)  { --accent: var(--lavender); }
 
 .card-title {
-  color: var(--pink-dark);
+  color: var(--steel-100);
 }
 
-/* ========== Listen ========== */
+/* ================= Listen ================= */
 .list-group {
   --bs-list-group-bg: transparent;
   --bs-list-group-border-color: var(--bs-border-color);
+  --bs-list-group-action-hover-bg: rgba(255, 255, 255, 0.05);
 }
 
-/* ========== Platzhalter ========== */
+#ev-output .list-group-item-action {
+  cursor: pointer;
+}
+
+/* ================= Platzhalter ================= */
 .placeholder-box {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 180px;
-  border: 2px dashed var(--accent, var(--pink));
+  border: 1px dashed var(--steel-500);
   border-radius: var(--bs-border-radius);
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.02);
   color: var(--bs-secondary-color);
   text-align: center;
 }
 
+.placeholder-box img {
+  border-radius: var(--bs-border-radius);
+}
+
 .map-box {
   min-height: 500px;
-  padding: 0;
-  overflow: hidden;
 }
 
-/* Sobald die Karte drin ist: kein gestrichelter Rahmen mehr */
-.map-box:has(iframe) {
-  border: 0;
-}
-
-.map-frame {
-  flex: 1;
-  width: 100%;
+/* ================= Karte & Diagramm ================= */
+.leaflet-map {
   height: clamp(450px, 70vh, 750px);
-  border: 0;
   border-radius: var(--bs-border-radius);
+}
+
+.chart-box {
+  height: 400px;
+}
+
+/* ================= Horoskop ================= */
+.sign-symbol {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  font-size: 2.5rem;
+  border-radius: 50%;
+  background: var(--chrome-soft);
+  border: 1px solid var(--steel-500);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.horo-box {
+  height: 100%;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--bs-border-color);
+  border-radius: calc(var(--bs-border-radius) * 0.75);
+}
+
+.horo-label {
+  margin-bottom: 0.35rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bs-secondary-color);
+}
+
+.stars {
+  letter-spacing: 0.15em;
+  color: var(--steel-100);
+}
+
+.lucky {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.5rem;
+  color: var(--steel-100);
+}
+
+/* ================= Weniger Bewegung, wenn gewünscht ================= */
+@media (prefers-reduced-motion: reduce) {
+  .chrome-text,
+  .welcome::before {
+    animation: none;
+  }
 }
